@@ -8,22 +8,33 @@ class Main:
 		self.estado_inicial = Nodo(estado_inicial)
 		r = self.conseguir_ruta()
 		self.imprimir_ruta(r)
+		#==Segunda forma de obtener la ruta==
+		self.imprimir_ruta_dos(r)
+		#====================================
 
 
 	def conseguir_ruta(self):
+		#Definicion de condiciones iniciales 
 		cola = Cola()
 		estado_actual = self.estado_inicial
 		visitados = []
 		hijos = self.crear_hijos(estado_actual)
+
+		#Algoritmo de busqueda BFS (por amplitud)
 		while (self.es_solucion(estado_actual.conseguir_cadena()) == False):
-			#self.imprimir_como_matriz(estado_actual.conseguir_cadena())
 			visitados.append(estado_actual.conseguir_cadena())
 			hijos = self.crear_hijos(estado_actual)
 			for x in hijos: 
 				if x.conseguir_cadena() not in visitados:
+					#==Segunda forma de obtener la ruta==
+					x.establecer_ruta_al_nodo(estado_actual.ruta_al_nodo, estado_actual.conseguir_cadena()) #en cada nodo hijo guardo la ruta
+					#====================================
 					cola.push(x)
 			estado_actual = cola.pop()
 		visitados.append(estado_actual.conseguir_cadena()) #añado el último nodo al salir del while
+		#==Segunda forma de obtener la ruta==
+		estado_actual.establecer_ruta_al_nodo(estado_actual.ruta_al_nodo, estado_actual.conseguir_cadena())#guardo el último nodo en la ruta
+		#====================================
 		return estado_actual
 
 	def es_solucion(self, estado):
@@ -76,6 +87,15 @@ class Main:
 		while(nodo_actual != None):
 			self.imprimir_como_matriz(nodo_actual.conseguir_cadena())
 			nodo_actual = nodo_actual.conseguir_padre()
+
+	#==Segunda forma de obtener la ruta==
+	def imprimir_ruta_dos(self, nodo_final):
+		ruta = nodo_final.conseguir_ruta_al_nodo()
+		print("======== Ruta al nodo ========\n")
+		for x in ruta:
+			self.imprimir_como_matriz(x)
+		print ("La ruta tiene "+str(len(nodo_final.ruta_al_nodo))+ " pasos")
+	#====================================
 
 	def imprimir_como_matriz(self,cadena):
 		print(cadena[:3] + "\n" + cadena[3:6] + "\n" + cadena[6:] + "\n\n")
