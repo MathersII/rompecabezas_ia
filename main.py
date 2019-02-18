@@ -16,6 +16,7 @@ class Main:
 		visitados = []
 		hijos = self.crear_hijos(estado_actual)
 		while (self.es_solucion(estado_actual.conseguir_cadena()) == False):
+			#self.imprimir_como_matriz(estado_actual.conseguir_cadena())
 			visitados.append(estado_actual.conseguir_cadena())
 			hijos = self.crear_hijos(estado_actual)
 			for x in hijos: 
@@ -36,15 +37,12 @@ class Main:
 		cadena = nodo.conseguir_cadena()
 		pos_vacia = cadena.find("0")
 		positions = self.crear_posiciones(pos_vacia)
-		cadenas_hijos = list(#convierto mapa a lista
+		return list(#convierto mapa a lista
 			filter( #filtro aquellos que sean -1 --> ver funcion nueva_cadena, retorna -1
-				lambda x: type(x) == str,list(
-					map(lambda x: self.nueva_cadena(cadena,pos_vacia,x),positions) #creo las nuevas cadenas
+				lambda x: type(x) == Nodo,list(
+					map(lambda x: self.nueva_cadena(nodo,pos_vacia,x),positions) #creo las nuevas cadenas
 					)
 				)
-			)
-		return list(#convierto mapa a lista
-				map(lambda x : Nodo(x, nodo),cadenas_hijos) #creo los nodos hijos con las cadenas
 			)
 
 
@@ -64,11 +62,12 @@ class Main:
 					pos_vacia + 1,
 					pos_vacia + 3]
 
-	def nueva_cadena(self,cadena,posicion_cero,nueva_posicion):
+	def nueva_cadena(self,nodo,posicion_cero,nueva_posicion):
+		cadena = nodo.conseguir_cadena()
 		if nueva_posicion >= 0 and nueva_posicion < 9: #evito tener error por un fuera de rango en el array
 			nueva_cadena = cadena[:posicion_cero] + cadena[nueva_posicion] + cadena[posicion_cero + 1:]
 			nueva_cadena = nueva_cadena[:nueva_posicion] + "0" + nueva_cadena[nueva_posicion + 1:]
-			return nueva_cadena
+			return Nodo(nueva_cadena.strip(),nodo)
 		else:
 			return -1 #los fuera de rango retornan esta bandera
 

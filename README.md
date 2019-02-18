@@ -9,4 +9,7 @@ Para ejercutar el programa se debe contar con:
  - Python 3.6
  - Node 8.12
 
-
+Para ejecutar el programa:
+ python3 rompecabezas_a_resolver solucion
+ P.ejemplo: 
+ 	python3 "1230456789" "123456780"
