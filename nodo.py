@@ -1,12 +1,11 @@
 class Nodo:
-
-	def __init__(self, cadena,hijos):
-		self.hijos = hijos
+	def __init__(self,cadena, padre = None): #por defecto none, el primer nodo no tiene padre
 		self.cadena = cadena
+		self.padre = padre
 
-	def conseguirCadena():
+	def conseguir_cadena(self):
 		return self.cadena
 
-	def conseguirHijos():
-		return self.hijos
+	def conseguir_padre(self):
+		return self.padre
 		
