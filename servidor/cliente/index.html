@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Rompecabezas</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<div class="header">
+		<h1>Inteligencia Artificial</h1>
+	</div>
+	<div class="wrapper-1">
+		<div class="left-side">
+			<h2>Ingresa el estado inicial</h2>
+			<div class="box">
+				<div class="item"><input type="number" id="pos-1" maxlength="1"></div>
+				<div class="item"><input type="number" id="pos-2" maxlength="1"><</div>
+				<div class="item"><input type="number" id="pos-3" maxlength="1"><</div>
+				<div class="item"><input type="number" id="pos-4" maxlength="1"><</div>
+				<div class="item"><input type="number" id="pos-5" maxlength="1"><</div>
+				<div class="item"><input type="number" id="pos-6" maxlength="1"><</div>
+				<div class="item"><input type="number" id="pos-7" maxlength="1"><</div>
+				<div class="item"><input type="number" id="pos-8" maxlength="1"><</div>
+				<div class="item"><input type="number" id="pos-9" maxlength="1"><</div>
+			</div>
+		</div>
+
+		<div class="right-side">
+			<h2>Estado final</h2>
+			<div class="box">
+				<div class="item"><p id="pos-1">1</p></div>
+				<div class="item"><p id="pos-2">2</p></div>
+				<div class="item"><p id="pos-3">3</p></div>
+				<div class="item"><p id="pos-4">4</p></div>
+				<div class="item"><p id="pos-5">5</p></div>
+				<div class="item"><p id="pos-6">6</p></div>
+				<div class="item"><p id="pos-7">7</p></div>
+				<div class="item"><p id="pos-8">8</p></div>
+				<div class="item"><p id="pos-9">0</p></div>
+			</div>
+		</div>
+	</div>
+
+	<button id="conseguir-ruta">
+		Conseguir la solución
+	</button>
+
+	<div class="wrapper-2" id="espacio-solucion"></div>
+
+	<script src="/socket.io/socket.io.js" charset="utf-8"></script>
+	<script src="index.js"></script>
+</body>
+</html>

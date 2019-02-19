@@ -7,10 +7,16 @@ class Main:
 		self.estado_final = estado_final
 		self.estado_inicial = Nodo(estado_inicial)
 		r = self.conseguir_ruta()
-		self.imprimir_ruta(r)
+
+		#Para ejecutar el programa desde la interfaz grafica descomente estas líneas
+		self.enviar_ruta(r)
+
+		#Para ejecuta el programa desde la terminal descomente estas lineas
+		#self.imprimir_ruta(r)
 		#==Segunda forma de obtener la ruta==
-		self.imprimir_ruta_dos(r)
+		#self.imprimir_ruta_dos(r)
 		#====================================
+
 
 
 	def conseguir_ruta(self):
@@ -31,9 +37,9 @@ class Main:
 					#====================================
 					cola.push(x)
 			estado_actual = cola.pop()
-		visitados.append(estado_actual.conseguir_cadena()) #añado el último nodo al salir del while
+		visitados.append(estado_actual.conseguir_cadena()) #agrego el ultimo nodo al salir del while
 		#==Segunda forma de obtener la ruta==
-		estado_actual.establecer_ruta_al_nodo(estado_actual.ruta_al_nodo, estado_actual.conseguir_cadena())#guardo el último nodo en la ruta
+		estado_actual.establecer_ruta_al_nodo(estado_actual.ruta_al_nodo, estado_actual.conseguir_cadena())#guardo el ultimo nodo en la ruta
 		#====================================
 		return estado_actual
 
@@ -100,7 +106,17 @@ class Main:
 	def imprimir_como_matriz(self,cadena):
 		print(cadena[:3] + "\n" + cadena[3:6] + "\n" + cadena[6:] + "\n\n")
 
+	def enviar_ruta(self, nodo_final):
+		ruta = "" #"1,2,3,4,5,6,7,8,0 1,2,3,4,5,6,7,8,0 "
+		for x in nodo_final.conseguir_ruta_al_nodo():
+			for y in x:
+				ruta = ruta+y+","
+			ruta = ruta + " "
+		ruta = ruta.replace(", ", " ")
+		print(ruta)
+
 
 if __name__ == '__main__':	
-	main = Main(sys.argv[1],sys.argv[2])
+	args = sys.argv[1].split(" ")
+	main = Main(args[0],args[1])
 
