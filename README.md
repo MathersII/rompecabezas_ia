@@ -19,7 +19,7 @@ Para ejecutar el programa desde la interfaz gráfica:
 
 	1. abrir una terminal a la altura de esta carpeta
 	2. para instalar las dependencias ejecute: npm install
-	3. para levantar el servidor ejecute: npm install
+	3. para levantar el servidor ejecute: npm start
 	4. para ingresar a la interfaz ingresa desde un navegador a: localhost:3000
 
 
