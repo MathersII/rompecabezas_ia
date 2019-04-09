@@ -105,7 +105,14 @@ class Main:
 	def enviar_ruta(self, nodo_final):
 		print(nodo_final.conseguir_ruta_al_nodo())
 
+def leer_argumentos():
+	parser = argparse.ArgumentParser(description='Definir tipo de heuristica')
+	parser.add_argument('-t','--tipo_heuristica', required=True,help= 'Tipo de heuristica: h1 o h2')
+	
+	args = parser.parse_args()
+	argumentos= args.tipo_heuristica
 
+	return argumentos
 if __name__ == '__main__':	
 	args = sys.argv[1].split(" ")
 	main = Main(args[0],args[1])
